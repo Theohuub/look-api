@@ -1,4 +1,6 @@
-package br.com.ifpe.look.modelo.loja;
+package br.com.ifpe.look.modelo.usuario;
+
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,33 +16,34 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "Loja")
+@Table(name = "Usuario")
 @Where(clause = "habilitado = true")
 @Builder
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Loja extends EntidadeAuditavel  {
-    @Column
-   private String nomeLoja;
+public class Usuario extends EntidadeAuditavel  {
 
     @Column
-   private String enderecoWeb;
+    private String nome;
+    
+    @Column
+    private String cpf;
 
     @Column
-   private String foneCelular;
-   
+    private LocalDate dataNascimento;
+
     @Column
-   private String foneFixo;
+    private String email;
 
-   @Column
-   private String cidadeOrigem;
+    @Column
+    private String foneCelular;
 
-   @Column
-   private String cnpj;
+    @Column
+    private String foneFixo;
 
-   @Column
-   private String responsavel;
+    @Column
+    private String senha;
 
 }
