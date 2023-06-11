@@ -30,3 +30,4 @@ public abstract class EntidadeNegocio implements Serializable {
   
 }
 
+
