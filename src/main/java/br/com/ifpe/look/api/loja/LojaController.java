@@ -22,12 +22,12 @@ import br.com.ifpe.look.util.entity.GenericController;
 
 @RestController
 @RequestMapping("/api/loja")
-public class LojaController extends GenericController{
-    
-     @Autowired
-    private LojaService lojaService;
+public class LojaController extends GenericController {
 
-    @PostMapping
+   @Autowired
+   private LojaService lojaService;
+
+   @PostMapping
    public ResponseEntity<Loja> save(@RequestBody @Valid LojaRequest request) {
 
       Loja lojaNovo = request.build();
@@ -35,16 +35,16 @@ public class LojaController extends GenericController{
       return new ResponseEntity<Loja>(loja, HttpStatus.CREATED);
    }
 
-    @GetMapping
+   @GetMapping
    public List<Loja> listarTodos() {
-  
-       return lojaService.listarTodos();
+
+      return lojaService.listarTodos();
    }
 
-    @GetMapping("/{id}")
+   @GetMapping("/{id}")
    public Loja obterPorID(@PathVariable Long id) {
 
-       return lojaService.obterPorID(id);
+      return lojaService.obterPorID(id);
    }
 
    @PutMapping("/{id}")
