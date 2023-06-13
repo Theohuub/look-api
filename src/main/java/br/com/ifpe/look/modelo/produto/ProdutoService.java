@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.ifpe.look.util.entity.GenericService;
-import br.com.ifpe.look.modelo.produto.Produto.ProdutoBuilder;
 
 
 @Service
@@ -22,10 +21,6 @@ public class ProdutoService extends GenericService{
  
         super.preencherCamposAuditoria(produto);
         return repository.save(produto);
-    }
-
-    public Produto save(ProdutoBuilder build) {
-        return null;
     }
 
     public List<Produto> listarTodos() {

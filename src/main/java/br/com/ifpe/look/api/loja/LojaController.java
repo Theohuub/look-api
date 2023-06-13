@@ -1,4 +1,4 @@
-package br.com.ifpe.look.api.produto;
+package br.com.ifpe.look.api.loja;
 
 import java.util.List;
 
@@ -14,32 +14,33 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.ifpe.look.modelo.produto.Produto;
-import br.com.ifpe.look.modelo.produto.ProdutoService;
+import br.com.ifpe.look.modelo.loja.Loja;
+import br.com.ifpe.look.modelo.loja.LojaService;
 import br.com.ifpe.look.util.entity.GenericController;
 
 @RestController
-@RequestMapping("/api/produto")
-public class ProdutoController extends GenericController{
+@RequestMapping("/api/loja")
+public class LojaController extends GenericController{
     
-    @Autowired
-    private ProdutoService produtoService;
+     @Autowired
+    private LojaService lojaService;
 
     @PostMapping
-    public ResponseEntity<Produto> save(@RequestBody @Valid ProdutoRequest request) {
+    public ResponseEntity<Loja> save(@RequestBody @Valid LojaRequest request) {
  
-        Produto produto = produtoService.save(request.build());
-       return new ResponseEntity<Produto>(produto, HttpStatus.CREATED);
+        Loja loja = lojaService.save(request.build());
+       return new ResponseEntity<Loja>(loja, HttpStatus.CREATED);
     }
-    @GetMapping
-   public List<Produto> listarTodos() {
-  
-       return produtoService.listarTodos();
-   }
-   
-    @GetMapping("/{id}")
-   public Produto obterPorID(@PathVariable Long id) {
 
-       return produtoService.obterPorID(id);
+    @GetMapping
+   public List<Loja> listarTodos() {
+  
+       return lojaService.listarTodos();
+   }
+
+    @GetMapping("/{id}")
+   public Loja obterPorID(@PathVariable Long id) {
+
+       return lojaService.obterPorID(id);
    }
 }
