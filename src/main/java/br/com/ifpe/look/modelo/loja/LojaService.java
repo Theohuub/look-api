@@ -10,52 +10,51 @@ import org.springframework.stereotype.Service;
 import br.com.ifpe.look.util.entity.GenericService;
 
 @Service
-public class LojaService extends GenericService {
+public class LojaService extends GenericService{
+    
+    @Autowired
+    private LojaRepository repository;
+ 
+    @Transactional
+    public Loja save(Loja loja) {
+ 
+        super.preencherCamposAuditoria(loja);
+        return repository.save(loja);
+    }
 
-   @Autowired
-   private LojaRepository repository;
+@Transactional
+    public void update(Long id, Loja lojaAlterado) {
 
-   @Transactional
-   public Loja save(Loja loja) {
+        Loja loja = repository.findById(id).get();
+        loja.setNomeLoja(lojaAlterado.getNomeLoja());
+        loja.setEndereco(lojaAlterado.getEndereco());
+        loja.setFoneCelular(lojaAlterado.getFoneCelular());
+        loja.setFoneFixo(lojaAlterado.getFoneFixo());
+        loja.setCidadeOrigem(lojaAlterado.getCidadeOrigem());
+        loja.setCnpj(lojaAlterado.getCnpj());
 
-       super.preencherCamposAuditoria(loja);
-       return repository.save(loja);
-   }
+        super.preencherCamposAuditoria(loja);
+        repository.save(loja);
+    }
 
-   @Transactional
-   public void update(Long id, Loja lojaAlterado) {
 
-      Loja loja = repository.findById(id).get();
-      loja.setNomeLoja(lojaAlterado.getNomeLoja());
-      loja.setEnderecoWeb(lojaAlterado.getEnderecoWeb());
-      loja.setFoneCelular(lojaAlterado.getFoneCelular());
-      loja.setFoneFixo(lojaAlterado.getFoneFixo());
-      loja.setCidadeOrigem(lojaAlterado.getCidadeOrigem());
-      loja.setCnpj(lojaAlterado.getCnpj());
-      loja.setResponsavel(lojaAlterado.getResponsavel());
-	    
-      super.preencherCamposAuditoria(loja);
-      repository.save(loja);
-  }
-
-   public List<Loja> listarTodos() {
+    public List<Loja> listarTodos() {
   
     return repository.findAll();
 }
 
-public Loja obterPorID(Long id) {
+    public Loja obterPorID(Long id) {
 
     return repository.findById(id).get();
 }
 
-@Transactional
-public void delete(Long id) {
+ @Transactional
+    public void delete(Long id) {
 
-    Loja loja = repository.findById(id).get();
-    loja.setHabilitado(Boolean.FALSE);
-    super.preencherCamposAuditoria(loja);
+        Loja loja = repository.findById(id).get();
+        loja.setHabilitado(Boolean.FALSE);
+        super.preencherCamposAuditoria(loja);
 
-    repository.save(loja);
-}
-
+        repository.save(loja);
+    }
 }

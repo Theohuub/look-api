@@ -21,26 +21,23 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Loja extends EntidadeAuditavel  {
-     @Column
-   private String nomeLoja;
+public class Loja extends EntidadeAuditavel{
+    
+    @Column
+    private String nomeLoja;
 
     @Column
-   private String enderecoWeb;
+    private String endereco;
+ 
+    @Column
+    private String foneCelular;
 
     @Column
-   private String foneCelular;
-   
-    @Column
-   private String foneFixo;
+    private String foneFixo;
 
     @Column
-   private String cidadeOrigem;
+    private String cidadeOrigem;
 
     @Column
-   private String cnpj;
-
-    @Column
-   private String responsavel;
-
+    private String cnpj;
 }

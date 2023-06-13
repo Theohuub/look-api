@@ -32,9 +32,6 @@ public class UsuarioRequest {
     private String senha;
 
     public Usuario build() {
-
-
-
         
         return Usuario.builder()
         .nome(nome)

@@ -9,31 +9,29 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class LojaRequest {
-   
-   private String nomeLoja;
+    
+    private String nomeLoja;
 
-   private String enderecoWeb;
+    private String endereco;
+ 
+    private String foneCelular;
 
-   private String foneCelular;
+    private String foneFixo;
 
-   private String foneFixo;
+    private String cidadeOrigem;
 
-   private String cidadeOrigem;
+    private String cnpj;
 
-   private String cnpj;
+    public Loja build(){
 
-   private String responsavel;
-
-   public Loja build() {
-
-       return Loja.builder()
-               .nomeLoja(nomeLoja)
-               .enderecoWeb(enderecoWeb)
-               .foneCelular(foneCelular)
-               .foneFixo(foneFixo)
-               .cidadeOrigem(cidadeOrigem)
-               .cnpj(cnpj)
-               .responsavel(responsavel)
-               .build();
-   }
+        return Loja.builder()
+           .nomeLoja(nomeLoja)
+           .endereco(endereco)
+           .foneCelular(foneCelular)
+           .foneFixo(foneFixo)
+           .cidadeOrigem(cidadeOrigem)
+           .cnpj(cnpj)
+           .build();
+    }
 }
+
