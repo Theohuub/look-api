@@ -34,31 +34,31 @@ public class LojaController extends GenericController {
       Loja loja = lojaService.save(lojaNovo);
       return new ResponseEntity<Loja>(loja, HttpStatus.CREATED);
    }
-
+   
    @GetMapping
    public List<Loja> listarTodos() {
-
-      return lojaService.listarTodos();
+  
+       return lojaService.listarTodos();
    }
 
    @GetMapping("/{id}")
    public Loja obterPorID(@PathVariable Long id) {
 
-      return lojaService.obterPorID(id);
+       return lojaService.obterPorID(id);
    }
-
+   
    @PutMapping("/{id}")
    public ResponseEntity<Loja> update(@PathVariable("id") Long id, @RequestBody LojaRequest request) {
 
-      lojaService.update(id, request.build());
-      return ResponseEntity.ok().build();
+       lojaService.update(id, request.build());
+       return ResponseEntity.ok().build();
    }
 
    @DeleteMapping("/{id}")
    public ResponseEntity<Void> delete(@PathVariable Long id) {
 
-      lojaService.delete(id);
-      return ResponseEntity.ok().build();
+       lojaService.delete(id);
+       return ResponseEntity.ok().build();
    }
 
 }

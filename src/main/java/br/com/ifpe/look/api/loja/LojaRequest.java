@@ -3,35 +3,39 @@ package br.com.ifpe.look.api.loja;
 import br.com.ifpe.look.modelo.loja.Loja;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class LojaRequest {
-    
-    private String nomeLoja;
+   
+   private String nomeLoja;
 
-    private String endereco;
- 
-    private String foneCelular;
+   private String enderecoWeb;
 
-    private String foneFixo;
+   private String foneCelular;
 
-    private String cidadeOrigem;
+   private String foneFixo;
 
-    private String cnpj;
+   private String cidadeOrigem;
 
-    public Loja build(){
+   private String cnpj;
 
-        return Loja.builder()
-           .nomeLoja(nomeLoja)
-           .endereco(endereco)
-           .foneCelular(foneCelular)
-           .foneFixo(foneFixo)
-           .cidadeOrigem(cidadeOrigem)
-           .cnpj(cnpj)
-           .build();
-    }
+   private String responsavel;
+
+   public Loja build() {
+
+       return Loja.builder()
+               .nomeLoja(nomeLoja)
+               .enderecoWeb(enderecoWeb)
+               .foneCelular(foneCelular)
+               .foneFixo(foneFixo)
+               .cidadeOrigem(cidadeOrigem)
+               .cnpj(cnpj)
+               .responsavel(responsavel)
+               .build();
+   }
 }
-
