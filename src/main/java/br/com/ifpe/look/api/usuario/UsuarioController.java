@@ -27,6 +27,7 @@ public class UsuarioController extends GenericController {
    @Autowired
    private UsuarioService usuarioService;
 
+
    @PostMapping
    public ResponseEntity<Usuario> save(@RequestBody @Valid UsuarioRequest request) {
 
@@ -41,6 +42,7 @@ public class UsuarioController extends GenericController {
       return usuarioService.listarTodos();
    }
 
+  
    @GetMapping("/{id}")
    public Usuario obterPorID(@PathVariable Long id) {
 

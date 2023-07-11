@@ -24,41 +24,41 @@ import br.com.ifpe.look.util.entity.GenericController;
 @RequestMapping("/api/loja")
 public class LojaController extends GenericController {
 
-   @Autowired
-   private LojaService lojaService;
+    @Autowired
+    private LojaService lojaService;
 
-   @PostMapping
-   public ResponseEntity<Loja> save(@RequestBody @Valid LojaRequest request) {
+    @PostMapping
+    public ResponseEntity<Loja> save(@RequestBody @Valid LojaRequest request) {
 
-      Loja lojaNovo = request.build();
-      Loja loja = lojaService.save(lojaNovo);
-      return new ResponseEntity<Loja>(loja, HttpStatus.CREATED);
-   }
-   
-   @GetMapping
-   public List<Loja> listarTodos() {
-  
-       return lojaService.listarTodos();
-   }
+        Loja lojaNovo = request.build();
+        Loja loja = lojaService.save(lojaNovo);
+        return new ResponseEntity<Loja>(loja, HttpStatus.CREATED);
+    }
 
-   @GetMapping("/{id}")
-   public Loja obterPorID(@PathVariable Long id) {
+    @GetMapping
+    public List<Loja> listarTodos() {
 
-       return lojaService.obterPorID(id);
-   }
-   
-   @PutMapping("/{id}")
-   public ResponseEntity<Loja> update(@PathVariable("id") Long id, @RequestBody LojaRequest request) {
+        return lojaService.listarTodos();
+    }
 
-       lojaService.update(id, request.build());
-       return ResponseEntity.ok().build();
-   }
+    @GetMapping("/{id}")
+    public Loja obterPorID(@PathVariable Long id) {
 
-   @DeleteMapping("/{id}")
-   public ResponseEntity<Void> delete(@PathVariable Long id) {
+        return lojaService.obterPorID(id);
+    }
 
-       lojaService.delete(id);
-       return ResponseEntity.ok().build();
-   }
+    @PutMapping("/{id}")
+    public ResponseEntity<Loja> update(@PathVariable("id") Long id, @RequestBody LojaRequest request) {
+
+        lojaService.update(id, request.build());
+        return ResponseEntity.ok().build();
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
+
+        lojaService.delete(id);
+        return ResponseEntity.ok().build();
+    }
 
 }
