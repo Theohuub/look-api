@@ -23,24 +23,24 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Loja extends EntidadeAuditavel{
    
-   @Column
+   
    private String nomeLoja;
 
-   @Column
+   @Column(nullable = false, length = 100)
    private String enderecoWeb;
 
    @Column
    private String foneCelular;
    
-   @Column
+   @Column(nullable = false, length = 20)
    private String foneFixo;
 
    @Column
    private String cidadeOrigem;
 
-   @Column
+   @Column(unique = true)
    private String cnpj;
 
-   @Column
+   @Column(nullable = false, length = 100)
    private String responsavel;
 }

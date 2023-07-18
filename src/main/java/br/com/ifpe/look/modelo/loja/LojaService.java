@@ -1,6 +1,7 @@
 package br.com.ifpe.look.modelo.loja;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.ifpe.look.util.entity.GenericService;
+import br.com.ifpe.look.util.exception.EntidadeNaoEncontradaException;
 
 @Service
 public class LojaService extends GenericService{
@@ -43,9 +45,19 @@ public class LojaService extends GenericService{
     return repository.findAll();
 }
 
-public Loja obterPorID(Long id) {
 
-    return repository.findById(id).get();
+public Loja obterPorID(Long id) {
+    Optional<Loja> consulta = repository.findById(id);
+  
+       if (consulta.isPresent()) {
+           return consulta.get();
+       } else {
+           throw new EntidadeNaoEncontradaException("Loja", id);
+       }
+       /**
+        * return repository.findById(id).get(); 
+        */
+       
 }
 
 @Transactional
